@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Drive - Locadora Boutique</title>
+    
+    <!-- Scripts & Styles -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style type="text/tailwindcss">
+        @theme {
+            --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+            --font-display: "Syne", sans-serif;
+            
+            --color-brand-dark: #0F172A;
+            --color-brand-accent: #334155;
+            --color-off-white: #F8F9FA;
+        }
+
+        @layer base {
+            body {
+                @apply bg-off-white text-slate-900 font-sans antialiased scroll-smooth;
+            }
+            h1, h2, h3, h4 {
+                @apply font-display font-extrabold;
+            }
+        }
+
+        .glass {
+            @apply bg-white/10 backdrop-blur-md border border-white/20;
+        }
+
+        .glass-dark {
+            @apply bg-slate-900/40 backdrop-blur-lg border border-slate-700/30;
+        }
+
+        .car-card:hover img {
+            @apply scale-110;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+            opacity: 1;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .animate-scroll {
+            animation: marquee 40s linear infinite;
+        }
+
+        @keyframes fade-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            opacity: 0;
+        }
+
+        .reveal.active {
+            animation: fade-up 0.8s ease-out forwards;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header id="main-header" class="fixed top-0 left-0 right-0 z-[60] transition-all duration-300 py-6">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="h-10 w-10 bg-brand-dark rounded-xl flex items-center justify-center">
+                    <i data-lucide="zap" class="text-white h-6 w-6"></i>
+                </div>
+                <span class="text-2xl tracking-tighter uppercase font-display font-black text-brand-dark">Elite<span class="text-brand-accent">Drive</span></span>
+            </div>
+            
+            <nav class="hidden md:flex items-center gap-10">
+                <a href="#frota" class="text-sm font-bold text-slate-600 hover:text-brand-dark transition-colors uppercase tracking-widest">A Frota</a>
+                <a href="#vagens" class="text-sm font-bold text-slate-600 hover:text-brand-dark transition-colors uppercase tracking-widest">Diferenciais</a>
+                <a href="#faq" class="text-sm font-bold text-slate-600 hover:text-brand-dark transition-colors uppercase tracking-widest">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="tel:+5500000000000" class="hidden lg:flex items-center gap-2 text-sm font-bold text-slate-900 px-4 py-2 rounded-full border border-slate-200">
+                    <i data-lucide="phone" class="h-4 w-4"></i> (11) 99999-9999
+                </a>
+                <a href="https://wa.me/5500000000000" class="bg-brand-dark text-white px-6 py-3 rounded-full text-sm font-bold hover:bg-slate-800 transition-all flex items-center gap-2">
+                    Reservar Agora <i data-lucide="arrow-right" class="h-4 w-4"></i>
+                </a>
+                <button id="mobile-menu-open" class="md:hidden p-2 text-brand-dark">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-[70] bg-white flex flex-col p-10 transform translate-x-full transition-transform duration-300 ease-in-out">
+        <div class="flex justify-end">
+            <button id="mobile-menu-close"><i data-lucide="x" class="h-8 w-8"></i></button>
+        </div>
+        <div class="mt-20 flex flex-col gap-8 text-3xl font-display font-bold">
+            <a href="#frota" class="menu-link">A Frota</a>
+            <a href="#vagens" class="menu-link">Diferenciais</a>
+            <a href="#faq" class="menu-link">FAQ</a>
+            <a href="https://wa.me/5500000000000" class="mt-10 py-6 bg-brand-dark text-white rounded-3xl flex items-center justify-center gap-4 text-xl">
+                Chamar no Zap <i data-lucide="message-circle"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-24 overflow-hidden bg-white">
+        <div class="container mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-slate-200 mb-8 bg-slate-50">
+                    <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-slate-600">Disponível em São Paulo</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-8 text-brand-dark">
+                    A agilidade que você precisa, com o <span class="text-slate-400">respeito que você merece.</span>
+                </h1>
+                <p class="text-xl text-slate-500 leading-relaxed mb-10 max-w-lg">
+                    Carro na mão em minutos, sem filas e sem letras miúdas. Locação de boutique para quem não tem tempo a perder.
+                </p>
+
+                <!-- Date Selector Box -->
+                <div class="bg-white p-8 rounded-[40px] shadow-2xl border border-slate-100 max-w-xl">
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Data Retirada</label>
+                            <div class="relative">
+                                <i data-lucide="calendar" class="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400"></i>
+                                <input type="date" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-50 border-none text-slate-900 focus:ring-2 focus:ring-brand-dark font-medium cursor-pointer">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Data Devolução</label>
+                            <div class="relative">
+                                <i data-lucide="calendar" class="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400"></i>
+                                <input type="date" class="w-full pl-12 pr-4 py-4 rounded-2xl bg-slate-50 border-none text-slate-900 focus:ring-2 focus:ring-brand-dark font-medium cursor-pointer">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-brand-dark text-white py-6 rounded-2xl font-display font-bold text-xl hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-3">
+                        Verificar Disponibilidade <i data-lucide="arrow-right" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative hidden lg:block reveal" style="transition-delay: 0.2s">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-slate-100 rounded-full blur-[120px] -z-10 opacity-60"></div>
+                <img 
+                    src="https://media.vibe-city.com.br/wp-content/uploads/2023/11/vw-polo-2024-preto.png" 
+                    alt="Elite Car" 
+                    class="w-full drop-shadow-[0_50px_50px_rgba(0,0,0,0.3)] relative z-10"
+                >
+                <div class="absolute top-20 right-0 glass px-6 py-4 rounded-3xl z-20 animate-bounce" style="animation-duration: 3s">
+                    <div class="flex items-center gap-3">
+                        <div class="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center">
+                            <i data-lucide="check-circle-2" class="text-green-600 h-5 w-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase text-slate-500">Pronto para Retirar</p>
+                            <p class="font-bold text-slate-900">Polo Highline Preto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Grid Section -->
+    <section id="frota" class="py-32 bg-off-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 reveal">
+                <div class="max-w-2xl">
+                    <span class="text-sm font-black uppercase tracking-[0.3em] text-brand-dark mb-4 block">Nossa Seleção</span>
+                    <h2 class="text-4xl md:text-6xl text-brand-dark">Carros impecavelmente <span class="text-slate-400 underline decoration-slate-200">mantidos para você.</span></h2>
+                </div>
+                <p class="text-slate-500 max-w-sm text-lg leading-relaxed">
+                    Selecionamos apenas modelos premium e completos. O carro que você reserva é exatamente o que você retira.
+                </p>
+            </div>
+
+            <div id="cars-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Car Cards will be injected here -->
+            </div>
+            
+            <div class="mt-20 text-center reveal">
+                <p class="text-slate-400 font-medium mb-6 italic">Não encontrou o que procurava?</p>
+                <button class="inline-flex items-center gap-3 text-brand-dark font-bold hover:gap-5 transition-all text-xl">
+                    Falar com Personal Concierge no WhatsApp <i data-lucide="arrow-right" class="h-6 w-6"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="vagens" class="py-32 bg-brand-dark text-white rounded-[60px] mx-4 my-20 reveal">
+        <div class="container mx-auto px-10">
+            <div class="max-w-3xl mb-24">
+                <span class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6 block">Diferenciais Elite</span>
+                <h2 class="text-4xl md:text-6xl mb-10 leading-tight">Onde as grandes locadoras falham, <span class="text-slate-500">nós entregamos excelência.</span></h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-12 text-slate-900">
+                <div class="flex flex-col items-center text-center p-8 bg-white rounded-[24px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 text-brand-dark ring-1 ring-slate-200">
+                        <i data-lucide="clock" class="h-8 w-8"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Rapidez Extrema</h3>
+                    <p class="text-slate-500 leading-relaxed">Esqueça balcões de aeroporto. Processo 100% digital e retirada em 5 minutos cronometrados.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-8 bg-white rounded-[24px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 text-brand-dark ring-1 ring-slate-200">
+                        <i data-lucide="message-circle" class="h-8 w-8"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Atendimento Humano</h3>
+                    <p class="text-slate-500 leading-relaxed">Nada de robôs. Você fala com um consultor real via WhatsApp pronto para resolver qualquer imprevisto.</p>
+                </div>
+                <div class="flex flex-col items-center text-center p-8 bg-white rounded-[24px] shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
+                    <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-slate-50 text-brand-dark ring-1 ring-slate-200">
+                        <i data-lucide="shield-check" class="h-8 w-8"></i>
+                    </div>
+                    <h3 class="mb-3 text-xl font-bold">Transparência Total</h3>
+                    <p class="text-slate-500 leading-relaxed">Sem taxas ocultas ou 'upgrades' forçados. O preço que você vê é o preço que você paga, com tudo incluso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-32 bg-slate-950 overflow-hidden relative">
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(30,58,138,0.1),transparent_50%)]"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-4xl md:text-5xl text-white mb-6">O que nossos <span class="text-blue-500">clientes dizem</span></h2>
+                <p class="text-slate-400 max-w-lg mx-auto">Feedback real de quem utiliza o nosso serviço diariamente.</p>
+            </div>
+
+            <div class="flex overflow-hidden">
+                <div class="flex gap-6 animate-scroll shrink-0" id="testimonials-track">
+                    <!-- Testimonials will be injected -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-32 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-16 reveal">
+                <span class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 block">Dúvidas Frequentes</span>
+                <h2 class="text-4xl text-brand-dark">Ficou com alguma <span class="text-slate-400 italic">incerteza?</span></h2>
+            </div>
+            <div class="space-y-4" id="faq-list">
+                <!-- FAQ items -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-20 border-t border-slate-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+                <div class="lg:col-span-2 reveal">
+                    <div class="flex items-center gap-2 mb-8">
+                        <div class="h-8 w-8 bg-brand-dark rounded-lg flex items-center justify-center">
+                            <i data-lucide="zap" class="text-white h-5 w-5"></i>
+                        </div>
+                        <span class="text-xl tracking-tighter uppercase font-display font-black text-brand-dark">Elite<span class="text-brand-accent">Drive</span></span>
+                    </div>
+                    <p class="text-slate-500 max-w-sm mb-6 leading-relaxed">
+                        Elevando o padrão de locação independente no Brasil. Carros premium, atendimento humano e conveniência digital.
+                    </p>
+                    <p class="text-xs text-slate-400 font-medium">CNPJ: 00.000.000/0000-00 | São Paulo, SP</p>
+                </div>
+                
+                <div class="reveal">
+                    <h4 class="font-bold mb-6 text-slate-900">Localização</h4>
+                    <div class="h-48 rounded-[32px] overflow-hidden grayscale opacity-80 border border-slate-100">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117017.44421113!2d-46.7323607!3d-23.5703358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce597d2aa517e7%3A0x51b510757a66d03d!2zU8OjbyBQYXVsbywgU1A!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr" 
+                            width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy" 
+                        ></iframe>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <h4 class="font-bold mb-6 text-slate-900">Contato</h4>
+                    <ul class="space-y-4 text-slate-500 text-sm">
+                        <li class="flex items-center gap-3"><i data-lucide="map-pin" class="h-4 w-4 text-brand-dark"></i> Av. Paulista, 1000, SP</li>
+                        <li class="flex items-center gap-3 font-bold text-slate-900"><i data-lucide="message-circle" class="h-4 w-4 text-green-500"></i> (11) 99999-9999</li>
+                        <li class="flex items-center gap-3"><i data-lucide="clock" class="h-4 w-4"></i> Seg - Sex: 08h às 19h</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+                <p class="text-slate-400 text-sm">© 2024 Elite Drive - Todos os direitos reservados.</p>
+                <div class="flex gap-8 text-sm font-bold text-slate-400">
+                    <a href="#" class="hover:text-brand-dark transition-colors">Segurança</a>
+                    <a href="#" class="hover:text-brand-dark transition-colors">Termos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Fixed WhatsApp -->
+    <a href="https://wa.me/5500000000000" target="_blank" class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl transition-transform hover:scale-110 active:scale-95">
+        <i data-lucide="message-circle" class="h-7 w-7"></i>
+    </a>
+
+    <script>
+        // --- Data ---
+        const CARS = [
+            { name: 'VW Polo Highline', category: 'Hatch Premium', price: 189, image: 'https://images.unsplash.com/photo-1621285853634-713b196b6378?auto=format&fit=crop&q=80&w=800', specs: ['Automático', 'Turbo', 'Completo'] },
+            { name: 'Jeep Compass S', category: 'SUV Executivo', price: 349, image: 'https://images.unsplash.com/photo-1628100063711-de64d081db1f?auto=format&fit=crop&q=80&w=800', specs: ['Teto Solar', 'Diesel 4x4', 'Full Adas'] },
+            { name: 'Chevrolet Onix RS', category: 'Esportivo Urbano', price: 169, image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800', specs: ['Manual/Aut', 'MyLink', 'Econômico'] },
+            { name: 'Toyota Corolla Altis', category: 'Sedan de Luxo', price: 289, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800', specs: ['Híbrido', 'Silencioso', 'Couro'] },
+            { name: 'Hyundai HB20 Platinum', category: 'Hatch Conforto', price: 159, image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800', specs: ['Câmera 360', 'Turbo', 'Conectividade'] },
+            { name: 'Fiat Pulse Audace', category: 'Crossover Moderno', price: 219, image: 'https://images.unsplash.com/photo-1632245889027-8a060b2ef943?auto=format&fit=crop&q=80&w=800', specs: ['Nacional', 'Altura Solo', 'Digital'] }
+        ];
+
+        const FAQS = [
+            { q: "Qual o valor do caução?", a: "O valor varia entre R$ 800 e R$ 2.000 dependendo da categoria. Liberamos o saldo instantaneamente na devolução." },
+            { q: "Quais documentos são necessários?", a: "Apenas CNH definitiva e válida e um comprovante de residência no seu nome ou parentesco direto." },
+            { q: "O seguro está incluso?", a: "Sim, todos os nossos carros possuem seguro completo contra colisão, furto e terceiros de série." },
+            { q: "Posso retirar em horários alternativos?", a: "Sim! Trabalhamos com entrega e retirada agendada 24h para clientes Prime cadastrados." },
+            { q: "Como funciona o pagamento?", a: "Aceitamos Cartão de Crédito (parcelado), PIX com desconto e faturamento para empresas." }
+        ];
+
+        const TESTIMONIALS = [
+            { name: "Ricardo M.", text: "Experiência incrível. O carro estava brilhando, processo muito rápido.", time: "14:23h" },
+            { name: "Camila S.", text: "Aluguei um SUV para viagem. Suporte 10/10.", time: "10:05h" },
+            { name: "João Pedro", text: "Melhor custo benefício que encontrei na região.", time: "18:44h" },
+            { name: "Beatriz L.", text: "Locação sem complicação. O atendimento faz a diferença.", time: "09:12h" }
+        ];
+
+        // --- Render Functions ---
+        function renderCars() {
+            const grid = document.getElementById('cars-grid');
+            grid.innerHTML = CARS.map(car => `
+                <div class="car-card group relative overflow-hidden rounded-[32px] bg-white p-4 shadow-xl border border-slate-100 transition-all hover:-translate-y-2 hover:shadow-2xl reveal">
+                    <div class="relative h-56 overflow-hidden rounded-[24px]">
+                        <img src="${car.image}" alt="${car.name}" class="h-full w-full object-cover transition-transform duration-500">
+                        <div class="absolute top-4 left-4 rounded-full bg-black/40 px-3 py-1 text-xs font-medium text-white backdrop-blur-md">
+                            ${car.category}
+                        </div>
+                    </div>
+                    <div class="mt-6 px-2 pb-2">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-2xl font-bold text-slate-900">${car.name}</h3>
+                            <span class="text-sm font-medium text-slate-500">A partir de</span>
+                        </div>
+                        <div class="mt-1 flex items-baseline gap-1">
+                            <span class="text-xs font-bold text-slate-900 uppercase">R$</span>
+                            <span class="text-3xl font-extrabold text-slate-900">${car.price}</span>
+                            <span class="text-sm text-slate-500">/dia</span>
+                        </div>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            ${car.specs.map(spec => `
+                                <span class="flex items-center gap-1 rounded-lg bg-slate-50 px-2 py-1 text-[11px] font-semibold text-slate-600 border border-slate-100">
+                                    <i data-lucide="check-circle-2" class="h-3 w-3 text-brand-dark"></i>
+                                    ${spec}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <button class="mt-6 flex w-full items-center justify-center gap-2 rounded-2xl bg-brand-dark px-6 py-4 font-bold text-white transition-all hover:bg-slate-800 active:scale-[0.98]">
+                            <span>Consultar Disponibilidade</span>
+                            <i data-lucide="message-circle" class="h-5 w-5"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderFAQs() {
+            const list = document.getElementById('faq-list');
+            list.innerHTML = FAQS.map((faq, i) => `
+                <div class="accordion-item border-b border-slate-200 py-4 reveal">
+                    <button class="flex w-full items-center justify-between text-left focus:outline-none" onclick="toggleAccordion(${i})">
+                        <span class="text-lg font-semibold text-slate-800">${faq.q}</span>
+                        <i data-lucide="chevron-down" class="h-5 w-5 transition-transform accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p class="mt-2 text-slate-600 leading-relaxed">${faq.a}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderTestimonials() {
+            const track = document.getElementById('testimonials-track');
+            const items = TESTIMONIALS.map(t => `
+                <div class="w-[320px] glass-dark p-6 rounded-[24px] border border-white/5 shrink-0 space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="flex gap-0.5">${'<i data-lucide="star" class="h-3 w-3 fill-yellow-400 text-yellow-400"></i>'.repeat(5)}</div>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold">Verificado</span>
+                    </div>
+                    <p class="text-slate-200 italic text-sm leading-relaxed">"${t.text}"</p>
+                    <div class="flex items-center justify-between border-t border-white/10 pt-4">
+                        <span class="text-xs font-bold text-white">${t.name}</span>
+                        <span class="text-[10px] text-slate-400 font-mono">${t.time}</span>
+                    </div>
+                </div>
+            `).join('');
+            // Triple for smooth infinite loop
+            track.innerHTML = items + items + items;
+        }
+
+        // --- Interactivity ---
+        window.toggleAccordion = (index) => {
+            const items = document.querySelectorAll('.accordion-item');
+            items[index].classList.toggle('active');
+            const icon = items[index].querySelector('.accordion-icon');
+            if (items[index].classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0)';
+            }
+        };
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const h = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                h.classList.add('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                h.classList.remove('py-6');
+                h.classList.add('py-4');
+            } else {
+                h.classList.remove('bg-white/90', 'backdrop-blur-md', 'shadow-sm');
+                h.classList.remove('py-4');
+                h.classList.add('py-6');
+            }
+
+            // Reveal Animation
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(r => {
+                const windowHeight = window.innerHeight;
+                const revealTop = r.getBoundingClientRect().top;
+                const revealPoint = 100;
+                if (revealTop < windowHeight - revealPoint) {
+                    r.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile Menu
+        const menu = document.getElementById('mobile-menu');
+        document.getElementById('mobile-menu-open').onclick = () => menu.style.transform = 'translateX(0)';
+        document.getElementById('mobile-menu-close').onclick = () => menu.style.transform = 'translateX(100%)';
+        document.querySelectorAll('.menu-link').forEach(l => l.onclick = () => menu.style.transform = 'translateX(100%)');
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCars();
+            renderFAQs();
+            renderTestimonials();
+            lucide.createIcons();
+            // Initial reveal check
+            setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
+        });
+    </script>
+</body>
+</html>
