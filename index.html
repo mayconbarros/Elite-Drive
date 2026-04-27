@@ -51,7 +51,8 @@
             opacity: 0;
         }
 
-        .accordion-item.active .accordion-content {
+        /* CORREÇÃO DO FAQ: Mudança de .active para .is-open isolando a lógica */
+        .accordion-item.is-open .accordion-content {
             max-height: 200px;
             opacity: 1;
         }
@@ -161,8 +162,9 @@
                             </div>
                         </div>
                     </div>
-                    <button class="w-full bg-brand-dark text-white py-4 md:py-6 rounded-2xl font-display font-bold text-base md:text-xl hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2 md:gap-3">
-                        Verificar Disponibilidade <i data-lucide="arrow-right" class="h-5 w-5 md:h-6 md:w-6"></i>
+                    <!-- REDUÇÃO DE BOTÃO: py-3 e text-xs para garantir a redução de 25% solicitada -->
+                    <button class="w-full bg-brand-dark text-white py-3 md:py-6 rounded-2xl font-display font-bold text-xs md:text-xl hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl active:scale-[0.99] flex items-center justify-center gap-2 md:gap-3">
+                        Verificar Disponibilidade <i data-lucide="arrow-right" class="h-4 w-4 md:h-6 md:w-6"></i>
                     </button>
                 </div>
             </div>
@@ -404,7 +406,7 @@
             const list = document.getElementById('faq-list');
             list.innerHTML = FAQS.map((faq, i) => `
                 <div class="accordion-item border-b border-slate-200 py-4 reveal">
-                    <button class="flex w-full items-center justify-between text-left focus:outline-none" onclick="toggleAccordion(${i})">
+                    <button class="flex w-full items-center justify-between text-left focus:outline-none cursor-pointer" onclick="toggleAccordion(${i})">
                         <span class="text-lg font-semibold text-slate-800">${faq.q}</span>
                         <i data-lucide="chevron-down" class="h-5 w-5 transition-transform accordion-icon"></i>
                     </button>
@@ -433,11 +435,12 @@
             track.innerHTML = items + items + items;
         }
 
+        /* CORREÇÃO DO FAQ: Alterna a classe is-open em vez da .active da animação */
         window.toggleAccordion = (index) => {
             const items = document.querySelectorAll('.accordion-item');
-            items[index].classList.toggle('active');
+            items[index].classList.toggle('is-open');
             const icon = items[index].querySelector('.accordion-icon');
-            if (items[index].classList.contains('active')) {
+            if (items[index].classList.contains('is-open')) {
                 icon.style.transform = 'rotate(180deg)';
             } else {
                 icon.style.transform = 'rotate(0)';
@@ -466,7 +469,7 @@
             });
         });
 
-        // Eventos do Menu Mobile (Garantido dentro do carregamento do DOM)
+        // Eventos do Menu Mobile
         document.addEventListener('DOMContentLoaded', () => {
             const menu = document.getElementById('mobile-menu');
             
