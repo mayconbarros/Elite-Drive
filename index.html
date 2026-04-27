@@ -133,10 +133,12 @@
                     <span class="flex h-2 w-2 rounded-full bg-green-500 animate-pulse"></span>
                     <span class="text-xs font-bold uppercase tracking-widest text-slate-600">Disponível em São Paulo</span>
                 </div>
-                <h1 class="text-5xl md:text-7xl lg:text-8xl leading-[0.9] mb-8 text-brand-dark">
+                
+                <h1 class="text-3xl lg:text-4xl font-extrabold leading-snug mb-6 text-brand-dark max-w-xl">
                     A agilidade que você precisa, com o <span class="text-slate-400">respeito que você merece.</span>
                 </h1>
-                <p class="text-xl text-slate-500 leading-relaxed mb-10 max-w-lg">
+                
+                <p class="text-lg text-slate-500 leading-relaxed mb-10 max-w-lg">
                     Carro na mão em minutos, sem filas e sem letras miúdas. Locação de boutique para quem não tem tempo a perder.
                 </p>
 
@@ -166,11 +168,13 @@
 
             <div class="relative hidden lg:block reveal" style="transition-delay: 0.2s">
                 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-slate-100 rounded-full blur-[120px] -z-10 opacity-60"></div>
+                
                 <img 
-                    src="https://media.vibe-city.com.br/wp-content/uploads/2023/11/vw-polo-2024-preto.png" 
+                    src="https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=1200" 
                     alt="Elite Car" 
-                    class="w-full drop-shadow-[0_50px_50px_rgba(0,0,0,0.3)] relative z-10"
+                    class="w-full drop-shadow-[0_50px_50px_rgba(0,0,0,0.3)] relative z-10 rounded-[40px] object-cover"
                 >
+                
                 <div class="absolute top-20 right-0 glass px-6 py-4 rounded-3xl z-20 animate-bounce" style="animation-duration: 3s">
                     <div class="flex items-center gap-3">
                         <div class="h-10 w-10 bg-green-500/20 rounded-full flex items-center justify-center">
@@ -178,7 +182,7 @@
                         </div>
                         <div>
                             <p class="text-[10px] font-black uppercase text-slate-500">Pronto para Retirar</p>
-                            <p class="font-bold text-slate-900">Polo Highline Preto</p>
+                            <p class="font-bold text-slate-900">Premium Line</p>
                         </div>
                     </div>
                 </div>
@@ -192,7 +196,8 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 reveal">
                 <div class="max-w-2xl">
                     <span class="text-sm font-black uppercase tracking-[0.3em] text-brand-dark mb-4 block">Nossa Seleção</span>
-                    <h2 class="text-4xl md:text-6xl text-brand-dark">Carros impecavelmente <span class="text-slate-400 underline decoration-slate-200">mantidos para você.</span></h2>
+                    
+                    <h2 class="text-2xl md:text-3xl text-brand-dark font-extrabold">Carros impecavelmente <span class="text-slate-400 underline decoration-slate-200">mantidos para você.</span></h2>
                 </div>
                 <p class="text-slate-500 max-w-sm text-lg leading-relaxed">
                     Selecionamos apenas modelos premium e completos. O carro que você reserva é exatamente o que você retira.
@@ -217,7 +222,8 @@
         <div class="container mx-auto px-10">
             <div class="max-w-3xl mb-24">
                 <span class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6 block">Diferenciais Elite</span>
-                <h2 class="text-4xl md:text-6xl mb-10 leading-tight">Onde as grandes locadoras falham, <span class="text-slate-500">nós entregamos excelência.</span></h2>
+                
+                <h2 class="text-2xl md:text-3xl mb-10 leading-tight font-extrabold">Onde as grandes locadoras falham, <span class="text-slate-500">nós entregamos excelência.</span></h2>
             </div>
             
             <div class="grid md:grid-cols-3 gap-12 text-slate-900">
@@ -252,7 +258,8 @@
         
         <div class="container mx-auto px-6 relative z-10">
             <div class="text-center mb-20 reveal">
-                <h2 class="text-4xl md:text-5xl text-white mb-6">O que nossos <span class="text-blue-500">clientes dizem</span></h2>
+                
+                <h2 class="text-2xl md:text-3xl text-white mb-6 font-extrabold">O que nossos <span class="text-blue-500">clientes dizem</span></h2>
                 <p class="text-slate-400 max-w-lg mx-auto">Feedback real de quem utiliza o nosso serviço diariamente.</p>
             </div>
 
@@ -269,7 +276,8 @@
         <div class="container mx-auto px-6 max-w-4xl">
             <div class="text-center mb-16 reveal">
                 <span class="text-xs font-black uppercase tracking-widest text-slate-400 mb-4 block">Dúvidas Frequentes</span>
-                <h2 class="text-4xl text-brand-dark">Ficou com alguma <span class="text-slate-400 italic">incerteza?</span></h2>
+                
+                <h2 class="text-2xl md:text-3xl text-brand-dark font-extrabold">Ficou com alguma <span class="text-slate-400 italic">incerteza?</span></h2>
             </div>
             <div class="space-y-4" id="faq-list">
                 <!-- FAQ items -->
@@ -330,17 +338,16 @@
     </a>
 
     <script>
-        // --- Data ---
-        const CARS = [
-            { name: 'VW Polo Highline', category: 'Hatch Premium', price: 189, image: 'https://images.unsplash.com/photo-1621285853634-713b196b6378?auto=format&fit=crop&q=80&w=800', specs: ['Automático', 'Turbo', 'Completo'] },
-            { name: 'Jeep Compass S', category: 'SUV Executivo', price: 349, image: 'https://images.unsplash.com/photo-1628100063711-de64d081db1f?auto=format&fit=crop&q=80&w=800', specs: ['Teto Solar', 'Diesel 4x4', 'Full Adas'] },
-            { name: 'Chevrolet Onix RS', category: 'Esportivo Urbano', price: 169, image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800', specs: ['Manual/Aut', 'MyLink', 'Econômico'] },
-            { name: 'Toyota Corolla Altis', category: 'Sedan de Luxo', price: 289, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800', specs: ['Híbrido', 'Silencioso', 'Couro'] },
-            { name: 'Hyundai HB20 Platinum', category: 'Hatch Conforto', price: 159, image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800', specs: ['Câmera 360', 'Turbo', 'Conectividade'] },
-            { name: 'Fiat Pulse Audace', category: 'Crossover Moderno', price: 219, image: 'https://images.unsplash.com/photo-1632245889027-8a060b2ef943?auto=format&fit=crop&q=80&w=800', specs: ['Nacional', 'Altura Solo', 'Digital'] }
+        const CARS =[
+            { name: 'VW Polo Highline', category: 'Hatch Premium', price: 189, image: 'https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?auto=format&fit=crop&q=80&w=800', specs:['Automático', 'Turbo', 'Completo'] },
+            { name: 'Jeep Compass S', category: 'SUV Executivo', price: 349, image: 'https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80&w=800', specs:['Teto Solar', 'Diesel 4x4', 'Full Adas'] },
+            { name: 'Chevrolet Onix RS', category: 'Esportivo Urbano', price: 169, image: 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&q=80&w=800', specs:['Manual/Aut', 'MyLink', 'Econômico'] },
+            { name: 'Toyota Corolla Altis', category: 'Sedan de Luxo', price: 289, image: 'https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?auto=format&fit=crop&q=80&w=800', specs:['Híbrido', 'Silencioso', 'Couro'] },
+            { name: 'Hyundai HB20 Platinum', category: 'Hatch Conforto', price: 159, image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80&w=800', specs:['Câmera 360', 'Turbo', 'Conectividade'] },
+            { name: 'Fiat Pulse Audace', category: 'Crossover Moderno', price: 219, image: 'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&q=80&w=800', specs:['Nacional', 'Altura Solo', 'Digital'] }
         ];
 
-        const FAQS = [
+        const FAQS =[
             { q: "Qual o valor do caução?", a: "O valor varia entre R$ 800 e R$ 2.000 dependendo da categoria. Liberamos o saldo instantaneamente na devolução." },
             { q: "Quais documentos são necessários?", a: "Apenas CNH definitiva e válida e um comprovante de residência no seu nome ou parentesco direto." },
             { q: "O seguro está incluso?", a: "Sim, todos os nossos carros possuem seguro completo contra colisão, furto e terceiros de série." },
@@ -348,14 +355,13 @@
             { q: "Como funciona o pagamento?", a: "Aceitamos Cartão de Crédito (parcelado), PIX com desconto e faturamento para empresas." }
         ];
 
-        const TESTIMONIALS = [
+        const TESTIMONIALS =[
             { name: "Ricardo M.", text: "Experiência incrível. O carro estava brilhando, processo muito rápido.", time: "14:23h" },
             { name: "Camila S.", text: "Aluguei um SUV para viagem. Suporte 10/10.", time: "10:05h" },
             { name: "João Pedro", text: "Melhor custo benefício que encontrei na região.", time: "18:44h" },
             { name: "Beatriz L.", text: "Locação sem complicação. O atendimento faz a diferença.", time: "09:12h" }
         ];
 
-        // --- Render Functions ---
         function renderCars() {
             const grid = document.getElementById('cars-grid');
             grid.innerHTML = CARS.map(car => `
@@ -368,12 +374,14 @@
                     </div>
                     <div class="mt-6 px-2 pb-2">
                         <div class="flex items-center justify-between">
-                            <h3 class="text-2xl font-bold text-slate-900">${car.name}</h3>
+                            <!-- ALTERAÇÃO DE FONTE: Nome do carro de text-2xl para text-lg -->
+                            <h3 class="text-lg font-bold text-slate-900">${car.name}</h3>
                             <span class="text-sm font-medium text-slate-500">A partir de</span>
                         </div>
                         <div class="mt-1 flex items-baseline gap-1">
                             <span class="text-xs font-bold text-slate-900 uppercase">R$</span>
-                            <span class="text-3xl font-extrabold text-slate-900">${car.price}</span>
+                            <!-- ALTERAÇÃO DE FONTE: Preço de text-3xl para text-2xl -->
+                            <span class="text-2xl font-extrabold text-slate-900">${car.price}</span>
                             <span class="text-sm text-slate-500">/dia</span>
                         </div>
                         <div class="mt-4 flex flex-wrap gap-2">
@@ -423,11 +431,9 @@
                     </div>
                 </div>
             `).join('');
-            // Triple for smooth infinite loop
             track.innerHTML = items + items + items;
         }
 
-        // --- Interactivity ---
         window.toggleAccordion = (index) => {
             const items = document.querySelectorAll('.accordion-item');
             items[index].classList.toggle('active');
@@ -439,7 +445,6 @@
             }
         };
 
-        // Header Scroll Effect
         window.addEventListener('scroll', () => {
             const h = document.getElementById('main-header');
             if (window.scrollY > 50) {
@@ -452,31 +457,26 @@
                 h.classList.add('py-6');
             }
 
-            // Reveal Animation
             const reveals = document.querySelectorAll('.reveal');
             reveals.forEach(r => {
                 const windowHeight = window.innerHeight;
                 const revealTop = r.getBoundingClientRect().top;
-                const revealPoint = 100;
-                if (revealTop < windowHeight - revealPoint) {
+                if (revealTop < windowHeight - 100) {
                     r.classList.add('active');
                 }
             });
         });
 
-        // Mobile Menu
         const menu = document.getElementById('mobile-menu');
         document.getElementById('mobile-menu-open').onclick = () => menu.style.transform = 'translateX(0)';
         document.getElementById('mobile-menu-close').onclick = () => menu.style.transform = 'translateX(100%)';
         document.querySelectorAll('.menu-link').forEach(l => l.onclick = () => menu.style.transform = 'translateX(100%)');
 
-        // Init
         document.addEventListener('DOMContentLoaded', () => {
             renderCars();
             renderFAQs();
             renderTestimonials();
             lucide.createIcons();
-            // Initial reveal check
             setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
         });
     </script>
